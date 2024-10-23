@@ -17,13 +17,13 @@
                     }
                     form.username.value = form.username.value.trim();
                     if (form.username.value.length == 0) {
-                        warningModal("로그인 아이디를 입력해주세요.");
+                        warningModal("로그인아이디를 입력해주세요.");
                         form.username.focus();
                         return;
                     }
                     form.password.value = form.password.value.trim();
                     if (form.password.value.length == 0) {
-                        warningModal("로그인 비밀번호를 입력해주세요.");
+                        warningModal("로그인비밀번호를 입력해주세요.");
                         form.password.focus();
                         return;
                     }
@@ -31,11 +31,7 @@
                     MemberLogin__submitDone = true;
                 }
             </script>
-            <!--th:action : 값을 안 넣어주면 같은 url로 POST 요청 ==> 지금은 member/login에 대한 POST 요청-->
-            <!--join에 대한 POST 요청은 MemberController에 있는데, login에 대한 POST 요청은 SecurityConfig에서 받아준다-->
-            <!--SecurityConfig에 보면 .loginProcessingUrl("/member/login") // 로그인 처리(POST) URL << 이게 있음 이거임-->
-            <!--.loginProcessingUrl은 원래 있는 메서드-->
-            <!--원래 문법 : th:action="@{member/login}"-->
+            <!--th:action="@{/member/login}"-->
             <form th:action method="POST" class="flex flex-col gap-3"
                   onsubmit="MemberLogin__submit(this); return false;">
                 <div class="form-control">
@@ -63,3 +59,9 @@
 </main>
 </body>
 </html>
+
+<!--th:action : 값을 안 넣어주면 같은 url로 POST 요청 ==> 지금은 member/login에 대한 POST 요청-->
+<!--join에 대한 POST 요청은 MemberController에 있는데, login에 대한 POST 요청은 SecurityConfig에서 받아준다-->
+<!--SecurityConfig에 보면 .loginProcessingUrl("/member/login") // 로그인 처리(POST) URL << 이게 있음 이거임-->
+<!--.loginProcessingUrl은 원래 있는 메서드-->
+<!--원래 문법 : th:action="@{member/login}"-->
