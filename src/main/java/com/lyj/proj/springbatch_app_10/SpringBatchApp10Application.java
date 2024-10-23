@@ -19,4 +19,5 @@ public class SpringBatchApp10Application {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
