@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.User;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//멤버랑 권한을 합쳐서, 얘는 어떤 권한을 갖고 있다고 한꺼번에 나타내줌
 @Getter
 public class MemberContext extends User {
     private final Long id;

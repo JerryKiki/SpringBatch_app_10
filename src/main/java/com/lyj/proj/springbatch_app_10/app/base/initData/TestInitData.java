@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+//.yml의 Profile이 test일 때 초기 데이터 생성
 @Configuration
 @Profile("test")
 public class TestInitData implements InitDataBefore {
