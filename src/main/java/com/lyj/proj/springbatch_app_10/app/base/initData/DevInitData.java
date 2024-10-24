@@ -1,24 +1,31 @@
 package com.lyj.proj.springbatch_app_10.app.base.initData;
 
+import com.lyj.proj.springbatch_app_10.app.cart.service.CartService;
 import com.lyj.proj.springbatch_app_10.app.member.service.MemberService;
+import com.lyj.proj.springbatch_app_10.app.order.service.OrderService;
+import com.lyj.proj.springbatch_app_10.app.product.service.ProductService;
 import com.lyj.proj.springbatch_app_10.app.song.service.SongService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-
 //.yml의 Profile이 dev일 때 초기 데이터 생성
 @Configuration
 @Profile("dev")
 public class DevInitData implements InitDataBefore {
     @Bean
-    CommandLineRunner initData(MemberService memberService, SongService songService) {
+    CommandLineRunner initData(MemberService memberService,
+                               SongService songService,
+                               ProductService productService,
+                               CartService cartService,
+                               OrderService orderService) {
         return args -> {
-            before(memberService, songService);
+            before(memberService, songService, productService, cartService, orderService);
         };
     }
 }
+
 //application.yml에서 한글 깨져서 필기 옮김
 //# application.yml => 기본 설정
 //# application_dev.yml => 개발 모드의 설정
