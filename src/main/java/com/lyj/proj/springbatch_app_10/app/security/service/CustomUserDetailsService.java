@@ -33,6 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         //사용자가 있으면, GrantedAuthority == 권한을 받다. ==> MEMBER '권한'을 부여.
         //상위 멤버가 있다거나, Admin이 따로 있다거나 하는 식으로 권한의 형태가 달라질 수 있음
         List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if (member.getUsername().equals("user1")) {
+            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+        }
+
         authorities.add(new SimpleGrantedAuthority("MEMBER"));
 
         //MemberContext 객체로 만들어서 줘버림

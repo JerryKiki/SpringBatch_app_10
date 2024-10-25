@@ -27,6 +27,7 @@ public class Order extends BaseEntity {
     private Member buyer;
 
     private String name;
+
     private boolean isPaid;
     private boolean isCanceled;
     private boolean isRefunded;
@@ -52,7 +53,6 @@ public class Order extends BaseEntity {
         for (OrderItem orderItem : orderItems) {
             orderItem.setPaymentDone();
         }
-
         isPaid = true;
     }
 
@@ -75,10 +75,19 @@ public class Order extends BaseEntity {
     public void makeName() {
         String name = orderItems.get(0).getProduct().getTitle();
 
-        if(orderItems.size() > 1) {
-            name += " 외 %d 곡".formatted(orderItems.size() -1);
+        if (orderItems.size() > 1) {
+            name += " 외 %d곡".formatted(orderItems.size() - 1);
         }
 
         this.name = name;
+
     }
+
+    public boolean payable() {
+        if (isPaid) return false;
+        if (isCanceled) return false;
+        return true;
+    }
+
+
 }
